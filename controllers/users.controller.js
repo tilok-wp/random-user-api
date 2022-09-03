@@ -1,17 +1,17 @@
-const users = require('../users/users');
+const users = require('../randomUserData.json');
 
 module.exports.getAllUsers = (req, res, next) => {
   const { limit, page } = req.query;
   console.log(limit, page);
   // undefined.test();
-  res.json(users.slice(0, limit));  
+  res.json(users.slice(0, limit));
 };
 
 //random user
 module.exports.getRandomUser = (req, res, next) => {
   users.map(user => {
     const randomUser = Math.floor(Math.random() *
-    users.length);
+      users.length);
     res.json(users[randomUser]);
   })
 };
@@ -25,7 +25,7 @@ module.exports.saveAUser = (req, res) => {
 };
 
 module.exports.getUserDetail = (req, res) => {
-  const {id} = req.params;
+  const { id } = req.params;
   console.log(id);
   // const filter = {_id: id};
   const foundUser = users.find(User => User.id === Number(id));
@@ -44,14 +44,10 @@ module.exports.updateUser = (req, res) => {
   // const newData = req.body;
   const { id } = req.params;
   const filter = { _id: id };
-
   const newData = users.find(User => User.id === Number(id));
-
   newData.id = id;
   newData.name = req.body.name;
-
   res.send(newData);
-
 };
 
 module.exports.deleteUser = (req, res) => {

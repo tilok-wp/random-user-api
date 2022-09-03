@@ -20,14 +20,7 @@ app.set("view engine", "ejs");
 app.use("/user", usersRoutes);
 
 app.get("/", (req, res) => {
-  // res.send("Hello World");
-  // res.sendFile(__dirname + "/public/test.html");
-  res.render("home.ejs", {
-    id: 5,
-    user: {
-      name: "test"
-    }
-  });
+  res.send("User data server running");
 });
 
 app.all("*", (req, res) => {
