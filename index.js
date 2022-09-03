@@ -17,12 +17,12 @@ app.set("view engine", "ejs");
 // Apply the rate limiting middleware to all requests
 // app.use(limiter);
 
-app.use("/api/user", usersRoutes);
+app.use("/user", usersRoutes);
 
 app.get("/", (req, res) => {
   // res.send("Hello World");
   // res.sendFile(__dirname + "/public/test.html");
-  res.render("home.ejs",{
+  res.render("home.ejs", {
     id: 5,
     user: {
       name: "test"
